@@ -1,20 +1,52 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
+const mockData = [
+  { name: "Batbold", age: 10 },
+  { name: "Chimeg", age: 10 },
+];
+
 export const Data = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
     fetch("https://dev.to/api/articles")
       .then((response) => response.json())
-      .then((data) => setArticles(data));
+      .then((data) => {
+        console.log("data", data);
+        setArticles(data);
+      });
   }, []);
+
   console.log("articles", articles);
 
   return (
     <div>
-      {articles.map((articles) => {
-        return <div>{articles.comments_count}</div>;
+      {articles.map((article) => {
+        return (
+          <div className="flex flex-col flex-start justify-center items-center p-4 gap-4 ">
+            <img
+              className="w-[360px] h-[240px] rounded-md"
+              src={article.cover_image}
+              alt="coverpicture"
+            />
+            <p className="text-2xl">{article.title}</p>
+            <p>
+              {article.readable_publish_date +
+                ", " +
+                new Date(article.published_at).getFullYear()}
+            </p>
+            <p className="flex  justify-center items-center">
+              {article.tag_list.map((tag) => {
+                return (
+                  <label className="text-sm mr-1 mb-1 rounded-md text-[#4b6bfb] bg-[#4b6bfb0d] py-1 px-2.5">
+                    {tag}
+                  </label>
+                );
+              })}
+            </p>
+          </div>
+        );
       })}
     </div>
   );
