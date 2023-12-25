@@ -31,11 +31,7 @@ export const Data = () => {
               alt="coverpicture"
             />
             <p className="text-2xl">{article.title}</p>
-            <p>
-              {article.readable_publish_date +
-                ", " +
-                new Date(article.published_at).getFullYear()}
-            </p>
+
             <p className="flex  justify-center items-center">
               {article.tag_list.map((tag) => {
                 return (
@@ -45,6 +41,19 @@ export const Data = () => {
                 );
               })}
             </p>
+            <div className="flex items-center text-[#97989F] text-base">
+              <img
+                className="w-9 h-9 rounded-full"
+                src={article.user.profile_image}
+                alt="coverpicture"
+              />
+              <p className="text-base ml-3">{article.user.name}</p>
+              <p className="ml-5">
+                {article.readable_publish_date +
+                  ", " +
+                  new Date(article.published_at).getFullYear()}
+              </p>
+            </div>
           </div>
         );
       })}
