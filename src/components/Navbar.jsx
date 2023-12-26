@@ -9,8 +9,9 @@ export const Navbar = () => {
             <img src="./logo.png"></img>
           </div>
           <div className="flex gap-10 justify-center items-center ml-[118px] w-[667px]">
-            <p>Home</p>
-            <p>Blog</p>
+            <a href="/">Home</a>
+
+            <a href="blog">Blog</a>
             <p>Contact</p>
           </div>
           <div className="flex py-2 px-4 gap-3 items-center bg-[#F4F4F5]">

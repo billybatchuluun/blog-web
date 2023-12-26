@@ -1,7 +1,7 @@
 import { Data } from "@/components/Data";
 import { Navbar } from "@/components/Navbar";
 
-export default function Home() {
+export default function Blog() {
   return (
     <main>
       <Navbar />
